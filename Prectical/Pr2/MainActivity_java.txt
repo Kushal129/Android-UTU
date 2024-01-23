@@ -1,0 +1,61 @@
+package com.example.pr2;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        EditText editTextYear = findViewById(R.id.editTextYear);
+        EditText editTextDays = findViewById(R.id.editTextDays);
+        TextView textViewResult = findViewById(R.id.textViewResult);
+        Button buttonCalculate = findViewById(R.id.buttonCalculate);
+
+        buttonCalculate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                String yearStr = editTextYear.getText().toString();
+                String daysStr = editTextDays.getText().toString();
+
+                if (!yearStr.isEmpty() && !daysStr.isEmpty()) {
+                    int year = Integer.parseInt(yearStr);
+                    int days = Integer.parseInt(daysStr);
+
+                    if (days < 365) {
+                        Date calculateDate = calculateDate(year, days);
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
+                        String formattedDate = sdf.format(calculateDate);
+                        textViewResult.setText("Result: " + formattedDate);
+                    } else {
+                        textViewResult.setText("Error: Number of days must be less than 365");
+                    }
+                } else {
+                    textViewResult.setText("Error: Please enter valid inputs");
+                }
+            }
+        });
+    }
+        private Date calculateDate(int year, int days) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.DAY_OF_YEAR, days);
+            return calendar.getTime();
+
+
+    }
+}

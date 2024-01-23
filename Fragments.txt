@@ -1,0 +1,28 @@
+create one project -> 
+	 Fragments:- side nev jevu kam kaj 
+s1:- activity_main.xml -> create one fragment 
+	  <fragment  
+        android:id="@+id/fragment1"  
+        android:name="example.javatpoint.com.fragmentexample.Fragment1"  
+        android:layout_width="0px"  
+        android:layout_height="match_parent"  
+        android:layout_weight="1"  
+        />  
+s2:- now create one more fragment 
+	 <fragment  
+        android:id="@+id/fragment2"  
+        android:name="example.javatpoint.com.fragmentexample.Fragment2"  
+        android:layout_width="0px"  
+        android:layout_height="match_parent"  
+        android:layout_weight="1"  
+        />  
+
+s3:- create new 2 xmls fragment1 and fragment2 
+	as well as java file also
+
+ 
+
+Here the inflater parameter is a LayoutInflater used to
+ inflate the layout, container parameter  is the parent
+ ViewGroup (from the activity’s layout) in which 
+ our Fragment layout will be inserted. 
